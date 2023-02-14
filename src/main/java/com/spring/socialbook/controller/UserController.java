@@ -2,6 +2,7 @@ package com.spring.socialbook.controller;
 
 import com.spring.socialbook.entity.Signup;
 import com.spring.socialbook.repository.SBRepository;
+import com.spring.socialbook.repository.UserRepository;
 import com.spring.socialbook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin("*")
-public class Controller {
+public class UserController {
     @Autowired
-    SBRepository repository;
+    UserRepository repository;
 
     @Autowired
     PostService service;
