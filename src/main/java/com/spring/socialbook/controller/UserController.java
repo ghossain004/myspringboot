@@ -12,7 +12,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
-public class Controller {
+public class UserController {
     @Autowired
     SBRepository repository;
 
