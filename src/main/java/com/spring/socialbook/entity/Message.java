@@ -17,24 +17,24 @@ import java.sql.Time;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Comment {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long commentId;
+    private Long messageId;
     private Long userId;
-    private Long postId;
-    private String commentBody;
-    private Integer commentCount;
+    private String messageBody;
+    private String firstName;
+    private String lastName;
     private Date createDate;
     private Time createTime;
     private Integer status;
 
-    public Comment(Long commentId, Long userId, Long postId, String commentBody, Integer commentCount, Date createDate, Time createTime, Integer status) {
-        this.commentId = commentId;
+    public Message(Long messageId, Long userId, String messageBody, String firstName, String lastName, Date createDate, Time createTime, Integer status) {
+        this.messageId = messageId;
         this.userId = userId;
-        this.postId = postId;
-        this.commentBody = commentBody;
-        this.commentCount = commentCount;
+        this.messageBody = messageBody;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.createDate = createDate;
         this.createTime = createTime;
         this.status = status;

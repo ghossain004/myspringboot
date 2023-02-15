@@ -1,6 +1,6 @@
 package com.spring.socialbook.controller;
 
-import com.spring.socialbook.entity.Signup;
+import com.spring.socialbook.entity.User;
 import com.spring.socialbook.repository.UserRepository;
 import com.spring.socialbook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +20,18 @@ public class UserController {
     PostService service;
 
     @GetMapping("/posts")
-    List<Signup> all(){
+    List<User> all(){
         System.out.println("Get all called");
         return userRepository.findAll();
     }
 
     @PostMapping("/posts")
-    Signup newPost(@RequestBody Signup newUser){
+    User newPost(@RequestBody User newUser){
         return userRepository.save(newUser);
     }
 
     @PutMapping("/post/{id}")
-    Signup updateUser(@RequestBody Signup signUp, @PathVariable Long id){
+    User updateUser(@RequestBody User signUp, @PathVariable Long id){
         return userRepository.findById(id).map(post->{
             post.setFirstName(signUp.getFirstName());
             post.setLastName(signUp.getLastName());
@@ -51,8 +51,8 @@ public class UserController {
 //    Single Item
 
     @GetMapping("/posts/{id}")
-    Signup oneUser(@PathVariable Long id) {
-        Optional<Signup> signUp = userRepository.findById(id);
+    User oneUser(@PathVariable Long id) {
+        Optional<User> signUp = userRepository.findById(id);
         return signUp.get();
     }
 }

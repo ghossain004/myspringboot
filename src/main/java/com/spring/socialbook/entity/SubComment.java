@@ -17,11 +17,12 @@ import java.sql.Time;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Comment {
+public class SubComment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long commentId;
+    private Long subCommentId;
     private Long userId;
+    private Long commentId;
     private Long postId;
     private String commentBody;
     private Integer commentCount;
@@ -29,9 +30,10 @@ public class Comment {
     private Time createTime;
     private Integer status;
 
-    public Comment(Long commentId, Long userId, Long postId, String commentBody, Integer commentCount, Date createDate, Time createTime, Integer status) {
-        this.commentId = commentId;
+    public SubComment(Long subCommentId, Long userId, Long commentId, Long postId, String commentBody, Integer commentCount, Date createDate, Time createTime, Integer status) {
+        this.subCommentId = subCommentId;
         this.userId = userId;
+        this.commentId = commentId;
         this.postId = postId;
         this.commentBody = commentBody;
         this.commentCount = commentCount;

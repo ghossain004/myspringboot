@@ -9,18 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Date;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Signup {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
-
     private String firstName;
     private String lastName;
     private String email;
@@ -28,7 +26,7 @@ public class Signup {
     private String dob;
     private String gender;
 
-    public Signup(Long userId, String firstName, String lastName, String email, String password, String dob, String gender) {
+    public User(Long userId, String firstName, String lastName, String email, String password, String dob, String gender) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

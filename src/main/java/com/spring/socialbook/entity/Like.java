@@ -17,26 +17,20 @@ import java.sql.Time;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Post {
+public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long likeId;
     private Long postId;
     private Long userId;
     private Integer likeCount;
-    private Integer commentCount;
-    private Integer shareCount;
-    private Date createDate;
-    private Time createTime;
     private Integer status;
 
-    public Post(Long postId, Long userId, Integer likeCount, Integer commentCount, Integer shareCount, Date createDate, Time createTime, Integer status) {
+    public Like(Long likeId, Long postId, Long userId, Integer likeCount, Integer status) {
+        this.likeId = likeId;
         this.postId = postId;
         this.userId = userId;
         this.likeCount = likeCount;
-        this.commentCount = commentCount;
-        this.shareCount = shareCount;
-        this.createDate = createDate;
-        this.createTime = createTime;
         this.status = status;
     }
 }
