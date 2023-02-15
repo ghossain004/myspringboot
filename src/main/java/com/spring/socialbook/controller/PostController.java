@@ -1,7 +1,7 @@
 package com.spring.socialbook.controller;
 
 import com.spring.socialbook.entity.Signup;
-import com.spring.socialbook.repository.UserRepository;
+import com.spring.socialbook.repository.SBRepository;
 import com.spring.socialbook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
-public class UserController {
+public class PostController {
+
     @Autowired
-    UserRepository userRepository;
+    SBRepository repository;
 
     @Autowired
     PostService service;
@@ -22,37 +23,37 @@ public class UserController {
     @GetMapping("/posts")
     List<Signup> all(){
         System.out.println("Get all called");
-        return userRepository.findAll();
+        return repository.findAll();
     }
 
     @PostMapping("/posts")
     Signup newPost(@RequestBody Signup newUser){
-        return userRepository.save(newUser);
+        return repository.save(newUser);
     }
 
     @PutMapping("/post/{id}")
     Signup updateUser(@RequestBody Signup signUp, @PathVariable Long id){
-        return userRepository.findById(id).map(post->{
+        return repository.findById(id).map(post->{
             post.setFirstName(signUp.getFirstName());
             post.setLastName(signUp.getLastName());
             post.setEmail(signUp.getEmail());
             post.setDob(signUp.getDob());
             post.setGender(signUp.getGender());
-            return userRepository.save(post);
+            return repository.save(post);
         }).orElseGet(() ->{
             signUp.setUserId(id);
-            return userRepository.save(signUp);
+            return repository.save(signUp);
         });
     }
 
     @DeleteMapping("/posts/{id}")
-    void deleteUser(@PathVariable Long id) {userRepository.deleteById(id);}
+    void deleteUser(@PathVariable Long id) {repository.deleteById(id);}
 
 //    Single Item
 
     @GetMapping("/posts/{id}")
     Signup oneUser(@PathVariable Long id) {
-        Optional<Signup> signUp = userRepository.findById(id);
+        Optional<Signup> signUp = repository.findById(id);
         return signUp.get();
     }
 }
