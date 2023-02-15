@@ -25,10 +25,10 @@ public class Signup {
     private String lastName;
     private String email;
     private String password;
-    private Date dob;
+    private String dob;
     private String gender;
 
-    public Signup(Long userId, String firstName, String lastName, String email, String password, Date dob, String gender) {
+    public Signup(Long userId, String firstName, String lastName, String email, String password, String dob, String gender) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
