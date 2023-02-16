@@ -17,23 +17,23 @@ public class LikeController {
     @Autowired
     LikeRepository likeRepository;
 
-    @GetMapping("/posts")
+    @GetMapping("/like")
     List<Like> all(){
         System.out.println("Get all called");
         return likeRepository.findAll();
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/like")
     Like newLike(@RequestBody Like like){
         return likeRepository.save(like);
     }
 
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/like/{id}")
     void deleteSubComment(@PathVariable Long id) {likeRepository.deleteById(id);}
 
 //    Single Item
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/like/{id}")
     Like oneLike(@PathVariable Long id) {
         Optional<Like> like = likeRepository.findById(id);
         return like.get();

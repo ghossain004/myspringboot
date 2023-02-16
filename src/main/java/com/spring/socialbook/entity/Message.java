@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -25,11 +27,11 @@ public class Message {
     private String messageBody;
     private String firstName;
     private String lastName;
-    private Date createDate;
-    private Time createTime;
+    private LocalDate createDate;
+    private LocalTime createTime;
     private Integer status;
 
-    public Message(Long messageId, Long userId, String messageBody, String firstName, String lastName, Date createDate, Time createTime, Integer status) {
+    public Message(Long messageId, Long userId, String messageBody, String firstName, String lastName, LocalDate createDate, LocalTime createTime, Integer status) {
         this.messageId = messageId;
         this.userId = userId;
         this.messageBody = messageBody;

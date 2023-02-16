@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -24,21 +26,10 @@ public class SubComment {
     private Long userId;
     private Long commentId;
     private Long postId;
+    private String userName;
     private String commentBody;
     private Integer commentCount;
-    private Date createDate;
-    private Time createTime;
+    private LocalDate createDate;
+    private LocalTime createTime;
     private Integer status;
-
-    public SubComment(Long subCommentId, Long userId, Long commentId, Long postId, String commentBody, Integer commentCount, Date createDate, Time createTime, Integer status) {
-        this.subCommentId = subCommentId;
-        this.userId = userId;
-        this.commentId = commentId;
-        this.postId = postId;
-        this.commentBody = commentBody;
-        this.commentCount = commentCount;
-        this.createDate = createDate;
-        this.createTime = createTime;
-        this.status = status;
-    }
 }

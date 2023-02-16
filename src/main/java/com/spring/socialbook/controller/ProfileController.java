@@ -15,18 +15,18 @@ public class ProfileController {
     @Autowired
     ProfileRepository profileRepository;
 
-    @GetMapping("/posts")
+    @GetMapping("/users")
     List<Profile> all(){
         System.out.println("Get all called");
         return profileRepository.findAll();
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/users")
     Profile createUser(@RequestBody Profile profile){
         return profileRepository.save(profile);
     }
 
-    @PutMapping("/post/{id}")
+    @PutMapping("/users/{id}")
     Profile updateUser(@RequestBody Profile profile, @PathVariable Long id){
         return profileRepository.findById(id).map(post->{
             post.setFirstName(profile.getFirstName());
@@ -41,12 +41,12 @@ public class ProfileController {
         });
     }
 
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/users/{id}")
     void deleteUser(@PathVariable Long id) {profileRepository.deleteById(id);}
 
 //    Single Item
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/users/{id}")
     Profile oneUser(@PathVariable Long id) {
         Optional<Profile> profile = profileRepository.findById(id);
         return profile.get();

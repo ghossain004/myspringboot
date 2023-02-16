@@ -19,18 +19,18 @@ public class UserController {
     @Autowired
     PostService service;
 
-    @GetMapping("/posts")
+    @GetMapping("/signup")
     List<User> all(){
         System.out.println("Get all called");
         return userRepository.findAll();
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/signup")
     User newPost(@RequestBody User newUser){
         return userRepository.save(newUser);
     }
 
-    @PutMapping("/post/{id}")
+    @PutMapping("/signup/{id}")
     User updateUser(@RequestBody User signUp, @PathVariable Long id){
         return userRepository.findById(id).map(post->{
             post.setFirstName(signUp.getFirstName());
@@ -45,12 +45,12 @@ public class UserController {
         });
     }
 
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/signup/{id}")
     void deleteUser(@PathVariable Long id) {userRepository.deleteById(id);}
 
 //    Single Item
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/signup/{id}")
     User oneUser(@PathVariable Long id) {
         Optional<User> signUp = userRepository.findById(id);
         return signUp.get();

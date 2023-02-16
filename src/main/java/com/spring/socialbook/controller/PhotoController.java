@@ -15,23 +15,23 @@ public class PhotoController {
     @Autowired
     PhotoRepository photoRepository;
 
-    @GetMapping("/posts")
+    @GetMapping("/photos")
     List<Photo> all(){
         System.out.println("Get all called");
         return photoRepository.findAll();
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/photos")
     Photo newPhoto(@RequestBody Photo photo){
         return photoRepository.save(photo);
     }
 
-        @DeleteMapping("/posts/{id}")
+        @DeleteMapping("/photos/{id}")
     void deleteSubComment(@PathVariable Long id) {photoRepository.deleteById(id);}
 
 //    Single Item
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/photos/{id}")
     Photo onePhoto(@PathVariable Long id) {
         Optional<Photo> photo = photoRepository.findById(id);
         return photo.get();

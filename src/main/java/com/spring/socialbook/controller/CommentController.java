@@ -5,6 +5,8 @@ import com.spring.socialbook.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,18 +17,20 @@ public class CommentController {
     @Autowired
     CommentRepository commentRepository;
 
-    @GetMapping("/posts")
+    @GetMapping("/comments")
     List<Comment> all(){
         System.out.println("Get all called");
         return commentRepository.findAll();
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/comments")
     Comment newComment(@RequestBody Comment comment){
+        comment.setCreateTime(LocalTime.now());
+        comment.setCreateDate(LocalDate.now());
         return commentRepository.save(comment);
     }
 
-    @PutMapping("/post/{id}")
+    @PutMapping("/comments/{id}")
     Comment updateComment(@RequestBody Comment comment, @PathVariable Long id){
         return commentRepository.findById(id).map(post->{
             post.setCommentBody(comment.getCommentBody());
@@ -37,12 +41,12 @@ public class CommentController {
         });
     }
 
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/comments/{id}")
     void deleteUser(@PathVariable Long id) {commentRepository.deleteById(id);}
 
 //    Single Item
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/comments/{id}")
     Comment oneComment(@PathVariable Long id) {
         Optional<Comment> comment = commentRepository.findById(id);
         return comment.get();

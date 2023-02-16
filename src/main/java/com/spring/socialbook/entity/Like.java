@@ -5,10 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -17,6 +14,7 @@ import java.sql.Time;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Table(name = "like_detail")
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
