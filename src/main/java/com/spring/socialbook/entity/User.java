@@ -5,10 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,13 +25,11 @@ public class User {
     private String dob;
     private String gender;
 
-    public User(Long userId, String firstName, String lastName, String email, String password, String dob, String gender) {
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Message> messages;
+
+    public User(Long userId) {
         this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.dob = dob;
-        this.gender = gender;
     }
 }

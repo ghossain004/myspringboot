@@ -1,6 +1,7 @@
 package com.spring.socialbook.controller;
 
 import com.spring.socialbook.entity.Message;
+import com.spring.socialbook.entity.User;
 import com.spring.socialbook.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,10 @@ import java.util.Optional;
 public class MessageController {
     @Autowired
     MessageRepository repository;
+
+//    public List<User> findUsersByName(String name) {
+//        return repository.findByName(name);
+//    }
 
     @GetMapping("/messages")
     List<Message> all(){
@@ -38,7 +43,7 @@ public class MessageController {
             post.setMessageBody(message.getMessageBody());
             return repository.save(post);
         }).orElseGet(() ->{
-            message.setUserId(id);
+            message.setUser(new User(id));
             return repository.save(message);
         });
     }

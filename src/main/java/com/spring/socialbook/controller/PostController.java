@@ -44,7 +44,7 @@ public class PostController {
             post.setPostBody(posts.getPostBody());
             return repository.save(post);
         }).orElseGet(() ->{
-            posts.setUserId(id);
+//            posts.setUserId(id);
             return repository.save(posts);
         });
     }

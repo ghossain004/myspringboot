@@ -20,15 +20,11 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long likeId;
     private Long postId;
-    private Long userId;
+//    private Long userId;
     private Integer likeCount;
     private Integer status;
 
-    public Like(Long likeId, Long postId, Long userId, Integer likeCount, Integer status) {
-        this.likeId = likeId;
-        this.postId = postId;
-        this.userId = userId;
-        this.likeCount = likeCount;
-        this.status = status;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

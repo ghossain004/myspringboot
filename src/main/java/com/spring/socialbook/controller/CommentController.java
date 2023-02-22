@@ -36,7 +36,7 @@ public class CommentController {
             post.setCommentBody(comment.getCommentBody());
             return commentRepository.save(post);
         }).orElseGet(() ->{
-            comment.setUserId(id);
+//            comment.setUserId(id);
             return commentRepository.save(comment);
         });
     }
